@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-String projectUrl = "https://github.com/riimano/ReemSundus.git";
+String projectUrl = "https://coded-meditation.eapi.joincoded.com";
 
 class ApiClient {
   static final Dio dio = Dio(
-    BaseOptions(baseUrl: ''),
+    BaseOptions(baseUrl: projectUrl),
   );
 
   static Future<void> addAuthToken() async {
@@ -30,7 +30,7 @@ class ApiClient {
   static Future<Response> post(String path, {Object? data}) async {
     await addAuthToken();
     try {
-      return await dio.get(path, data: data);
+      return await dio.post(path, data: data);
     } catch (error) {
       throw error.toString();
     }

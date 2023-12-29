@@ -5,7 +5,7 @@ import 'package:meditation_app/services/client.dart';
 class MedService {
   Future<List<Med>> getTodosListApi() async {
     try {
-      final responseValue = await ApiClient.get("/todos");
+      final responseValue = await ApiClient.get("/meds");
       if (responseValue.statusCode == 200) {
         final MedModel medModel = MedModel.fromJson(responseValue.data);
         return medModel.data;

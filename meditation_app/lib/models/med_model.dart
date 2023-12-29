@@ -26,14 +26,14 @@ class MedModel {
 class Med {
   Med({
     required this.id,
-    required this.todoName,
+    required this.medName,
     required this.createdAt,
     required this.updatedAt,
     // required this.V,
     required this.isComplete,
   });
   late final String id;
-  late final String todoName;
+  late final String medName;
   late final String? createdAt;
   late final String updatedAt;
   // late final int? V;
@@ -41,7 +41,7 @@ class Med {
 
   Med.fromJson(Map<String, dynamic> json) {
     id = json['_id'];
-    todoName = json['todoName'];
+    medName = json['medName'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     // V = json['__v'];
@@ -51,7 +51,7 @@ class Med {
   Map<String, dynamic> toJson() {
     final _data = <String, dynamic>{};
     _data['_id'] = id;
-    _data['todoName'] = todoName;
+    _data['medName'] = medName;
     _data['createdAt'] = createdAt;
     _data['updatedAt'] = updatedAt;
     // _data['__v'] = V;
