@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providers/auth_provider.dart';
 import 'package:meditation_app/providers/med_provider.dart';
 import 'package:meditation_app/views/home_page.dart';
 import 'package:meditation_app/views/signin.dart';
 import 'package:meditation_app/views/signup.dart';
+import 'package:meditation_app/widgets/user_profile.dart';
 
 import 'package:provider/provider.dart';
 
@@ -42,9 +44,9 @@ class MyApp extends StatelessWidget {
       builder: (context, state) => SignupPage(),
     ),
     // GoRoute(
-    //   path: "/",
-    //   name: 'splash',
-    //   builder: (context, state) => SplashScreen(),
+    //   path: "/user",
+    //   name: 'user',
+    //   builder: (context, state) => UserPage(),
     // ),
     GoRoute(
       path: "/signin",

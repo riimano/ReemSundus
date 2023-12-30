@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:meditation_app/providers/med_provider.dart';
+import 'package:meditation_app/widgets/user_profile.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatelessWidget {
   @override
@@ -28,20 +32,20 @@ class MyHomePage extends StatelessWidget {
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(), // Disable scrolling
               children: [
-                _buildCard('Card 1'),
-                _buildCard('Card 2'),
-                _buildCard('Card 3'),
-                _buildCard('Card 4'),
+                InkWell(onTap: () {
+                  child:
+                  _buildCard('Tips ');
+                }),
+                _buildCard('Yoga videos'),
+                _buildCard('Music'),
+                _buildCard('Meditation'),
               ],
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Handle the button press to show user profile
-          // Add your logic here
-        },
+        onPressed: () => GoRouter.of(context).push('/user'),
         child: Icon(Icons.person),
       ),
     );
