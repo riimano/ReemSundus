@@ -40,6 +40,9 @@ dependencies:
   jwt_decode: ^0.3.1
   provider: ^6.1.1
   shared_preferences: ^2.2.2
+  http: ^0.13.3
+  json_serializable: ^6.7.1
+  build_runner: ^2.4.7
 
 dev_dependencies:
   flutter_test:

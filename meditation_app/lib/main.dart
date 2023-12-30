@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providers/auth_provider.dart';
 import 'package:meditation_app/providers/med_provider.dart';
-import 'package:meditation_app/views/home_page.dart';
-import 'package:meditation_app/views/signin.dart';
-import 'package:meditation_app/views/signup.dart';
-import 'package:meditation_app/widgets/user_profile.dart';
+import 'package:meditation_app/providers/tip_provider.dart';
+import 'package:meditation_app/routes.dart';
 
 import 'package:provider/provider.dart';
 
@@ -18,6 +14,9 @@ void main() {
     ChangeNotifierProvider(
       create: (context) => AuthProvider(),
     ),
+    ChangeNotifierProvider(
+      create: (context) => TipProvider(),
+    ),
   ], child: MyApp()));
 }
 
@@ -27,31 +26,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: _router,
+      routerConfig: router,
     );
   }
 
 //initialLocation: "/signup"
-  final _router = GoRouter(routes: [
-    GoRoute(
-      path: "/home",
-      name: "home",
-      builder: (context, state) => MyHomePage(),
-    ),
-    GoRoute(
-      path: "/",
-      name: 'signup',
-      builder: (context, state) => SignupPage(),
-    ),
-    // GoRoute(
-    //   path: "/user",
-    //   name: 'user',
-    //   builder: (context, state) => UserPage(),
-    // ),
-    GoRoute(
-      path: "/signin",
-      name: "signin",
-      builder: (context, state) => SigninPage(),
-    ),
-  ]);
 }

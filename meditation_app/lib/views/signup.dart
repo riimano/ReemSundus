@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providers/auth_provider.dart';
+import 'package:meditation_app/providers/tip_provider.dart';
 
 import 'package:provider/provider.dart';
 
@@ -91,7 +92,17 @@ class _SignupPageState extends State<SignupPage> {
                 });
               },
               child: const Text("Sign Up"),
-            )
+            ),
+
+            //! delete this later
+            SizedBox(
+              height: 100,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  context.read<TipProvider>().getTips();
+                },
+                child: Text('testing')),
           ],
         ),
       ),
