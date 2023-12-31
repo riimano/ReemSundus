@@ -1,9 +1,9 @@
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/views/add_tip_page.dart';
 import 'package:meditation_app/views/home_page.dart';
 import 'package:meditation_app/views/meditation.dart';
 import 'package:meditation_app/views/music.dart';
-
 import 'package:meditation_app/views/signin.dart';
 import 'package:meditation_app/views/signup.dart';
 import 'package:meditation_app/views/tips.dart';
@@ -14,7 +14,7 @@ final router = GoRouter(routes: [
   GoRoute(
     path: "/home",
     name: "home",
-    builder: (context, state) => MyHomePage(),
+    builder: (context, state) => MyHomePage(user: state.extra as User),
   ),
   GoRoute(
     path: "/",
@@ -24,7 +24,7 @@ final router = GoRouter(routes: [
   GoRoute(
     path: "/MyProfile",
     name: 'MyProfile',
-    builder: (context, state) => MyProfile(),
+    builder: (context, state) => MyProfile(user: state.extra as User),
   ),
   GoRoute(
     path: "/signin",

@@ -2,19 +2,40 @@ import 'package:flutter/material.dart';
 import 'package:meditation_app/models/tip.dart';
 
 class TipCard extends StatelessWidget {
-  TipCard({super.key, required this.tip});
-  Tip tip;
+  TipCard({Key? key, required this.tip}) : super(key: key);
+
+  final Tip tip;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Card(
+      elevation: 2.0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12.0),
+      ),
       margin: EdgeInsets.only(bottom: 10),
-      width: double.infinity,
-      color: const Color.fromARGB(255, 207, 240, 255),
-      child: Column(
-        children: [
-          Text(tip.text!),
-          Text(tip.author!),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              tip.text!,
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Author: ${tip.author ?? "Unknown"}',
+              style: TextStyle(
+                fontSize: 14.0,
+                color: Colors.grey,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

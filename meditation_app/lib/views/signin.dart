@@ -13,7 +13,6 @@ class SigninPage extends StatefulWidget {
 
 class _SigninPageState extends State<SigninPage> {
   final usernameController = TextEditingController();
-
   final passwordController = TextEditingController();
 
   @override
@@ -27,40 +26,60 @@ class _SigninPageState extends State<SigninPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign in"),
+        title: const Text("Sign In"),
       ),
       resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text("Sign In"),
+            const Text(
+              "Sign In",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const SizedBox(height: 16),
             TextField(
-              decoration: const InputDecoration(hintText: 'Username'),
+              decoration: InputDecoration(
+                hintText: 'Username',
+                border: OutlineInputBorder(),
+              ),
               controller: usernameController,
             ),
+            const SizedBox(height: 16),
             TextField(
-              decoration: const InputDecoration(hintText: 'Password'),
+              decoration: InputDecoration(
+                hintText: 'Password',
+                border: OutlineInputBorder(),
+              ),
               controller: passwordController,
               obscureText: true,
             ),
+            const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
-                context
-                    .read<AuthProvider>()
-                    .signin(
-                      user: User(
-                          username: usernameController.text,
-                          password: passwordController.text),
-                    )
-                    .then((token) {
+                final User user = User(
+                  username: usernameController.text,
+                  password: passwordController.text,
+                );
+                context.read<AuthProvider>().signin(user: user).then((token) {
                   if (token.isNotEmpty) {
-                    context.pushNamed('home');
+                    context.pushNamed('home', extra: user);
                   }
                 });
               },
-              child: const Text("Sign In"),
-            )
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+              ),
+              child: const Text(
+                "Sign In",
+                style: TextStyle(fontSize: 18),
+              ),
+            ),
           ],
         ),
       ),

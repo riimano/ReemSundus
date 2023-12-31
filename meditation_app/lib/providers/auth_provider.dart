@@ -5,7 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
   final AuthService authService = AuthService();
-  User? user;
+
+  // User? user;
   String token = "";
 
   Future<String> signup({required User user}) async {

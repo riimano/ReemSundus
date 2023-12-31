@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providers/auth_provider.dart';
 import 'package:provider/provider.dart';
 
-class MyProfile extends StatefulWidget {
-  MyProfile({super.key});
+class MyProfile extends StatelessWidget {
+  final User user;
 
-  @override
-  State<MyProfile> createState() => _MyProfileState();
-}
-
-class _MyProfileState extends State<MyProfile> {
+  MyProfile({required this.user});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +37,8 @@ class _MyProfileState extends State<MyProfile> {
 
             // Username
             Text(
-              'Username: ${context.watch<AuthProvider>().user?.username ?? 'user'}',
+              // 'Username: ${context.watch<AuthProvider>().user?.username ?? 'user'}',
+              "Username: ${user.username}",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
 

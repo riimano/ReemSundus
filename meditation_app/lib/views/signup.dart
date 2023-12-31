@@ -1,12 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/providers/auth_provider.dart';
-import 'package:meditation_app/providers/tip_provider.dart';
-
 import 'package:provider/provider.dart';
 
 class SignupPage extends StatefulWidget {
@@ -18,11 +15,10 @@ class SignupPage extends StatefulWidget {
 
 class _SignupPageState extends State<SignupPage> {
   final passwordController = TextEditingController();
-
   final usernameController = TextEditingController();
-
   var _image;
   final _picker = ImagePicker();
+
   @override
   void dispose() {
     usernameController.dispose();
@@ -41,6 +37,7 @@ class _SignupPageState extends State<SignupPage> {
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             GestureDetector(
               onTap: () async {
@@ -51,58 +48,91 @@ class _SignupPageState extends State<SignupPage> {
                 });
               },
               child: Container(
-                width: 100,
-                height: 100,
+                width: 120,
+                height: 120,
                 margin: const EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(color: Colors.blue[200]),
-                child: Container(
-                  decoration: BoxDecoration(color: Colors.blue[200]),
-                  width: 200,
-                  height: 200,
-                  child: Icon(
-                    Icons.camera_alt,
-                    color: Colors.grey[800],
+                decoration: BoxDecoration(
+                  color: Colors.blue[200],
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: Colors.white,
+                    width: 4.0,
                   ),
                 ),
+                child: _image != null
+                    ? ClipOval(
+                        child: Image.file(
+                          _image,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    : Icon(
+                        Icons.camera_alt,
+                        color: Colors.grey[800],
+                        size: 40,
+                      ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text("Image"),
+            const SizedBox(height: 16),
+            const Text(
+              "Sign Up",
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            const Text("Sign Up"),
+            const SizedBox(height: 16),
             TextField(
-              decoration: const InputDecoration(hintText: 'Username'),
+              decoration: InputDecoration(
+                hintText: 'Username',
+                border: OutlineInputBorder(),
+              ),
               controller: usernameController,
             ),
+            const SizedBox(height: 16),
             TextField(
-              decoration: const InputDecoration(hintText: 'Password'),
+              decoration: InputDecoration(
+                hintText: 'Password',
+                border: OutlineInputBorder(),
+              ),
               controller: passwordController,
               obscureText: true,
             ),
+            const SizedBox(height: 24),
             ElevatedButton(
               onPressed: () {
                 final User user = User(
-                    username: usernameController.text,
-                    password: passwordController.text);
+                  username: usernameController.text,
+                  password: passwordController.text,
+                );
                 context.read<AuthProvider>().signup(user: user).then((token) {
                   if (token.isNotEmpty) {
                     context.pushNamed("signin");
                   }
                 });
               },
-              child: const Text("Sign Up"),
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blue,
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+              ),
+              child: const Text(
+                "Sign Up",
+                style: TextStyle(fontSize: 18),
+              ),
             ),
-
-            //! delete this later
-            SizedBox(
-              height: 100,
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Already have an account?'),
+                TextButton(
+                  onPressed: () {
+                    context.pushNamed("signin");
+                  },
+                  child: const Text('Sign in'),
+                ),
+              ],
             ),
-            ElevatedButton(
-                onPressed: () {
-                  context.read<TipProvider>().getTips();
-                },
-                child: Text('testing')),
           ],
         ),
       ),
