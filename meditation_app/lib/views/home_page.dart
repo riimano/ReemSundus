@@ -16,28 +16,25 @@ class MyHomePage extends StatelessWidget {
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
-        ), // Display username in the app bar
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Search Bar
             TextField(
               decoration: InputDecoration(
                 hintText: 'Search...',
               ),
             ),
-            SizedBox(height: 16.0), // Add some spacing
-
-            // Grid of Cards
+            SizedBox(height: 16.0),
             GridView.count(
-              crossAxisCount: 2, // Number of columns in the grid
+              crossAxisCount: 2,
               crossAxisSpacing: 16.0,
               mainAxisSpacing: 16.0,
               shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(), // Disable scrolling
+              physics: NeverScrollableScrollPhysics(),
               children: [
                 InkWell(
                   onTap: () {
@@ -83,19 +80,17 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  // Function to create a Card widget
   Widget _buildCard({required String cardTitle, required String imageAsset}) {
     return Card(
       color: const Color.fromARGB(255, 157, 210, 237),
       elevation: 2.0,
       child: Column(
         children: [
-          // Use an Image widget to display the image
           Image.asset(
             imageAsset,
-            height: 120, // Adjust the height as needed
-            width: double.infinity, // Take the full width of the card
-            fit: BoxFit.fill, // Adjust the BoxFit as needed
+            height: 120,
+            width: double.infinity,
+            fit: BoxFit.fill,
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),

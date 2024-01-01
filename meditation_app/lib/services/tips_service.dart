@@ -2,20 +2,17 @@ import 'package:meditation_app/models/tip.dart';
 import 'package:meditation_app/services/client.dart';
 
 class TipService {
-  // GET TIPS FUNCTION
   Future<List<Tip>> getTips() async {
     List<Tip> tips = [];
     try {
       var res = await ApiClient.dio.get("/tips");
-      // print(res);
+
       tips = (res.data as List).map((tip) => Tip.fromJson(tip)).toList();
     } catch (e) {
       print(e);
     }
     return tips;
   }
-
-  // adding new tips
 
   Future<Tip> addTip({required Tip tip}) async {
     late Tip newTip;

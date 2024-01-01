@@ -6,14 +6,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthProvider extends ChangeNotifier {
   final AuthService authService = AuthService();
 
-  // User? user;
   String token = "";
 
   Future<String> signup({required User user}) async {
     token = await authService.signup(user: user);
     print("Signup successful. Token: $token");
 
-    // Token to be saved in local storage
     notifyListeners();
     return token;
   }
@@ -23,7 +21,6 @@ class AuthProvider extends ChangeNotifier {
     print("Signin successful. Token: $token");
     saveTokenInStorage(token);
 
-    // Token to be saved in local storage
     notifyListeners();
     return token;
   }
@@ -37,7 +34,6 @@ class AuthProvider extends ChangeNotifier {
     SharedPreferences shared = await SharedPreferences.getInstance();
     token = shared.getString('token') ?? "";
 
-    // Null check operator
     notifyListeners();
     return token;
   }

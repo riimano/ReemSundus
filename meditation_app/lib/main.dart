@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/providers/auth_provider.dart';
-import 'package:meditation_app/providers/med_provider.dart';
 import 'package:meditation_app/providers/tip_provider.dart';
 import 'package:meditation_app/routes.dart';
 
@@ -8,9 +7,9 @@ import 'package:provider/provider.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(
-      create: (context) => MedProvider(),
-    ),
+    // ChangeNotifierProvider(
+    //   create: (context) => MedProvider(),
+    // ),
     ChangeNotifierProvider(
       create: (context) => AuthProvider(),
     ),
@@ -28,7 +27,5 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: router,
     );
-  } //reemm
-
-//initialLocation: "/signup"
+  }
 }

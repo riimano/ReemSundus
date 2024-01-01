@@ -2,7 +2,6 @@ import 'package:go_router/go_router.dart';
 import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/views/add_tip_page.dart';
 import 'package:meditation_app/views/home_page.dart';
-import 'package:meditation_app/views/meditation.dart';
 import 'package:meditation_app/views/music.dart';
 import 'package:meditation_app/views/signin.dart';
 import 'package:meditation_app/views/signup.dart';
@@ -31,11 +30,11 @@ final router = GoRouter(routes: [
     name: "signin",
     builder: (context, state) => SigninPage(),
   ),
-  GoRoute(
-    path: "/Meditation",
-    name: "Meditation",
-    builder: (context, state) => Meditation(),
-  ),
+  // GoRoute(
+  //   path: "/Meditation",
+  //   name: "Meditation",
+  //   builder: (context, state) => Meditation(),
+  // ),
   GoRoute(
     path: "/Music",
     name: "Music",
