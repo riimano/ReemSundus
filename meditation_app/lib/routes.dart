@@ -54,8 +54,6 @@ final router = GoRouter(routes: [
   GoRoute(
     path: "/addTip",
     name: "addTip",
-    builder: (context, state) => AddTipPage(
-      tips: state.extra as Tip,
-    ),
+    builder: (context, state) => AddTipPage(),
   ),
 ]);
