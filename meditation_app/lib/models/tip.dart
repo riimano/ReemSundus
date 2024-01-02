@@ -4,7 +4,7 @@ part 'tip.g.dart';
 
 @JsonSerializable()
 class Tip {
-  int? id;
+  late int? id;
   String? text;
   String? author;
   List<int>? upvotes;

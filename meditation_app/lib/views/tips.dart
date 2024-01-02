@@ -25,7 +25,7 @@ class TipsListPage extends StatelessWidget {
             return Consumer<TipProvider>(
               builder: (context, tip, child) => ListView.builder(
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
+                  //   physics: const NeverScrollableScrollPhysics(),
                   itemCount: tip.tips.length,
                   itemBuilder: (context, index) =>
                       TipCard(tip: tip.tips[index])),
