@@ -24,4 +24,15 @@ class TipService {
     }
     return newTip;
   }
+
+  deleteTip({required Tip tip}) async {
+    late Tip delTip;
+    try {
+      final res = await ApiClient.dio.delete('/tips', data: tip.toJson());
+      delTip = Tip.fromJson(res.data);
+    } catch (e) {
+      print(e);
+    }
+    return delTip;
+  }
 }

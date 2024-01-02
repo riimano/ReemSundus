@@ -16,4 +16,10 @@ class TipProvider extends ChangeNotifier {
     tips.add(newTip);
     notifyListeners();
   }
+
+  Future<void> deleteTask({required int? id}) async {
+    tips.removeWhere((element) => element.id == id);
+    tips.remove(tips);
+    notifyListeners();
+  }
 }

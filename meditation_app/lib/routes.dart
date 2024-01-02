@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:meditation_app/models/tip.dart';
 import 'package:meditation_app/models/user.dart';
 import 'package:meditation_app/views/add_tip_page.dart';
 import 'package:meditation_app/views/home_page.dart';
@@ -53,6 +54,8 @@ final router = GoRouter(routes: [
   GoRoute(
     path: "/addTip",
     name: "addTip",
-    builder: (context, state) => AddTipPage(),
+    builder: (context, state) => AddTipPage(
+      tips: state.extra as Tip,
+    ),
   ),
 ]);

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meditation_app/models/tip.dart';
+import 'package:meditation_app/providers/tip_provider.dart';
+import 'package:provider/provider.dart';
 
 class TipCard extends StatelessWidget {
   TipCard({Key? key, required this.tip}) : super(key: key);
@@ -32,6 +34,19 @@ class TipCard extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14.0,
                 color: Colors.grey,
+              ),
+            ),
+            Card(
+              child: IconButton(
+                onPressed: () {
+                  final tipProvider =
+                      Provider.of<TipProvider>(context, listen: false);
+                  tipProvider.deleteTask(id: tip.id);
+                },
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
               ),
             ),
           ],

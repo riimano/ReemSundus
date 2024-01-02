@@ -7,7 +7,7 @@ part of 'tip.dart';
 // **************************************************************************
 
 Tip _$TipFromJson(Map<String, dynamic> json) => Tip(
-      id: json['id'] as int?,
+      id: json['id'] as int,
       text: json['text'] as String?,
       author: json['author'] as String?,
       upvotes:
